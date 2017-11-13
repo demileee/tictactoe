@@ -39,6 +39,7 @@ window.addEventListener("DOMContentLoaded", function() {
             && document.querySelector(comb.b).innerHTML !== "")  {
               document.querySelector(".status").innerHTML = document.querySelector(comb.a).innerHTML + " won!"
               gameStatus = 0;
+              counter = 0;
               document.querySelector("h2").classList.add("play-again");
             };
           });
@@ -56,6 +57,7 @@ window.addEventListener("DOMContentLoaded", function() {
           && document.querySelector(comb.b).innerHTML !== "") {
             document.querySelector(".status").innerHTML = document.querySelector(comb.a).innerHTML + " won!"
             gameStatus = 0;
+            counter = 0;
             document.querySelector("h2").classList.add("play-again");
           } ;
         });
@@ -63,10 +65,11 @@ window.addEventListener("DOMContentLoaded", function() {
       };
 
       // if every cell is filled but no win combination
-      if (counter === 9) {
+      if (counter === 9 && gameStatus === 1) {
         document.querySelector(".status").innerHTML = "Draw!";
         gameStatus = 0;
         document.querySelector("h2").classList.add("play-again");
+        counter = 0;
       };
 
     };
