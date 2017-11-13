@@ -63,7 +63,7 @@ window.addEventListener("DOMContentLoaded", function() {
       };
 
       // if every cell is filled but no win combination
-      if (counter === 9 && gameStatus === 1) {
+      if (counter === 9) {
         document.querySelector(".status").innerHTML = "Draw!";
         gameStatus = 0;
         document.querySelector("h2").classList.add("play-again");
@@ -72,14 +72,8 @@ window.addEventListener("DOMContentLoaded", function() {
     };
   });
 
-
-
-
-
-
   document.querySelector('body').addEventListener("keyup", function(e){
     if(e.keyCode == 32 && gameStatus === 0) {
-      console.log("hi");
       gameStatus = 1;
 
       document.querySelector("h2").classList.remove("play-again");
@@ -93,18 +87,3 @@ window.addEventListener("DOMContentLoaded", function() {
 
 
 });
-
-
-// else if {
-//   // if every cell is filled but no win combination
-//   document.querySelectorAll(".cell").forEach {function(cell) {
-//     if cell.classList.contains("filled") {
-//       counter++
-//     };
-//   }};
-//   if (counter === 9) {
-//     document.querySelector(".status").innerHTML = "Draw!"
-//     gameStatus = 0;
-//     document.querySelector("h2").classList.add("play-again");
-//   }
-// };
