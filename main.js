@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", function() {
 
   var activePlayer, gameStatus, counter;
-  counter = 0;
+  counter = 0; //counts how many cells filled, max 9
   activePlayer = 0;
   gameStatus = 1;
   // X's turn if activePlayer = 0
@@ -25,8 +25,6 @@ window.addEventListener("DOMContentLoaded", function() {
 
     if(gameStatus === 1){
 
-
-
       if(!e.target.classList.contains('filled')) {
         e.target.className = "cell filled";
         if(activePlayer === 0) {
@@ -43,7 +41,7 @@ window.addEventListener("DOMContentLoaded", function() {
               gameStatus = 0;
               document.querySelector("h2").classList.add("play-again");
             };
-          })
+          });
 
         } else if (activePlayer == 1) {
           e.target.innerHTML = "O";
@@ -60,11 +58,21 @@ window.addEventListener("DOMContentLoaded", function() {
             gameStatus = 0;
             document.querySelector("h2").classList.add("play-again");
           } ;
-        })
+        });
 
       };
+
+      // if every cell is filled but no win combination
+      if (counter === 9 && gameStatus === 1) {
+        document.querySelector(".status").innerHTML = "Draw!";
+        gameStatus = 0;
+        document.querySelector("h2").classList.add("play-again");
+      };
+
     };
   });
+
+
 
 
 
