@@ -1,25 +1,26 @@
 window.addEventListener("DOMContentLoaded", function() {
+
+  var activePlayer, gameStatus;
+  activePlayer = 0;
+  gameStatus = 1;
+  // X's turn if activePlayer = 0
+  // O's turn if activePlayer = 1
+  // game on when status = 1
+  // game off when status = 0
+
+  // winning combination of cells
+  winComb = [
+    { a: '#one', b: '#two', c: '#three' },
+    { a: '#four', b: '#five', c: '#six' },
+    { a: '#seven', b: '#eight', c: '#nine' },
+    { a: '#one', b: '#four', c: '#seven' },
+    { a: '#two', b: '#five', c: '#eight' },
+    { a: '#three', b: '#six', c: '#nine' },
+    { a: '#one', b: '#five', c: '#nine' },
+    { a: '#three', b: '#five', c: '#seven' },
+  ]
   document.querySelector(".container").addEventListener("click", function(e) {
 
-    var activePlayer, gameStatus;
-    activePlayer = 0;
-    gameStatus = 1;
-    // X's turn if activePlayer = 0
-    // O's turn if activePlayer = 1
-    // game on when status = 1
-    // game off when status = 2
-
-    // winning combination of cells
-    winComb = [
-      { a: '#one', b: '#two', c: '#three' },
-      { a: '#four', b: '#five', c: '#six' },
-      { a: '#seven', b: '#eight', c: '#nine' },
-      { a: '#one', b: '#four', c: '#seven' },
-      { a: '#two', b: '#five', c: '#eight' },
-      { a: '#three', b: '#six', c: '#nine' },
-      { a: '#one', b: '#five', c: '#nine' },
-      { a: '#three', b: '#five', c: '#seven' },
-    ]
 
   if(gameStatus === 1){
 
@@ -57,19 +58,22 @@ window.addEventListener("DOMContentLoaded", function() {
       })
 
     };
-    } else if (gameStatus === 0) {
-      document.body.onkeyup = function(e){
-          if(e.keyCode == 32) {
-            gameStatus = 1;
-            document.querySelector("h2").classList.remove("play-again");
-            document.querySelectorAll(".cell").forEach(function(cell) {
-              cell.innerHTML = "";
-            });
-          };
-      };
+  };
+
+  });
+
+  document.querySelector('body').addEventListener("keyup", function(e){
+    if(e.keyCode == 32 && gameStatus === 0) {
+      console.log("hi");
+      gameStatus = 1;
+
+      document.querySelector("h2").classList.remove("play-again");
+      document.querySelector(".status").innerHTML = "X's turn";
+      document.querySelectorAll(".cell").forEach(function(cell) {
+        cell.innerHTML = "";
+        cell.className = "cell";
+      });
     };
-
-
   });
 
 
